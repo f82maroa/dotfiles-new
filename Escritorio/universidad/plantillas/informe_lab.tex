@@ -1,0 +1,308 @@
+%Sistemas no inerciales
+\documentclass[a4paper,10pt,twocolumns]{article}
+\usepackage[spanish]{babel} %Indica que escribiermos en español
+\usepackage[utf8]{inputenc}  
+
+\usepackage[a4paper]{geometry}
+\geometry{top=1.5cm, bottom=1.0cm, left=1.25cm, right=1.25cm}
+\usepackage[usenames]{color} % Para colorear texto
+
+ % Para poner el texto de las imágenes al lado
+\usepackage{float}
+\usepackage{graphicx} % Incluir imágenes en LaTeX
+\usepackage{ amsmath, amsthm, latexsym, amssymb, amsfonts, epsfig, enumerate, color, listings}
+
+\graphicspath{ {images/} }
+					% Para personalizar el ancho de  los márgenes
+ % Izquierda, derecha, arriba, abajo
+
+\title{TÍTULO}
+\date{\today}
+\author{Roberto Rodríguez Vaz\\
+Álvaro Martín Romero \\
+Manuel Pérez Luna}
+\begin{document}
+
+\newpage
+\twocolumn[
+\begin{@twocolumnfalse}
+\maketitle
+\vspace*{-1cm}
+\addcontentsline{top}{chapter}{\textcolor{black}{Índice}}
+ \tableofcontents
+\vspace*{1cm}
+\begin{center}\rule{0.9\textwidth}{0.1mm} \end{center}
+\vspace*{0.5cm}
+\begin{abstract}
+\normalsize 
+Nuestro objetivo en esta práctica es estudiar el comportamiento de las ondas electromagnéticas utilizando una fuente que emite en el rango de microondas para comprobar la dependencia de la distancia con la intensidad de radiación EM y, gracias a una cavidad, creando una onda estacionaria,  determinar la frecuencia de la radiación emitida así como los coeficientes de reflexión y transmisión de distintos materiales
+\begin{center}\rule{0.9\textwidth}{0.1mm} \end{center}
+
+\vspace*{0.4cm}
+\end{abstract}
+\end{@twocolumnfalse}]
+\section{Introducción}
+La primera parte consiste en hallar la dependencia de la distancia con la intensidad de la radiación electromagnética. Según sabemos, la dependencia de la intensidad es inversamente proporcional con el cuadrado de la distancia. Mediremos la intensidad de la fuente de radiación para cada distancia y así comprobar esta dependencia gráficamente
+\\
+\\
+En la segunda parte estudiamos la onda estacionaria a través de la medición de nodos y vientres gracias a un dispositivo reflector solapa la onda emitida y reflectada formando esta onda estacionaria 
+\\
+\\
+En la tercera parte de la práctica obtenemos el coeficiente de reflexión del metal y del corcho a través de mediciones de voltaje en la onda estacionaria y en la onda incidente en ambos casos. 
+
+\section{Comprobación proporcionalidad intensidad frente a distancia}
+% Gráfica dependencia lineal
+Tomamos medidas del voltaje de la radiación incidente para diferentes distancias $d$. Para  realizar una comprobación de la proporcionalidad entre intensidad y distancia, usamos la fórmula $$U/U_{max}$$ donde $U$ es el potencial para cada distancia $d$ y $U_{max}$ es el voltaje a máxima intensidad . $U_{max}=(11.2 \pm 0.1) V$ \\ 
+\\
+Los valores obtenidos junto con sus errores se encuentran en el \textit{Cuadro 1} (Anexo).
+\\
+\\
+A continuación representamos gráficamente el valor de $U/U_{max}$ y $d$:
+
+
+\includegraphics[scale=0.68]{rcuadrado.PNG}
+
+La línea de tendencia de esta gráfica se expresa en la ecuación:
+$$\boxed{y=x^{-1.42}}$$
+
+Sin embargo, para obtener un resultado más conciso sobre nuestros datos, realizaremos una linealización del comportamiento de $I$ fernte a $1/r^2$ de forma que realizamos una regersión lineal de $(U/U_{max})^{-1/2}$ frente a $r$ y así comprobar si los datos siguen una tendencía lineal como cabría esperarse de la proporcionalidad entre intensidad y distancia. Realizamos la representación gráfica de los valores:
+
+
+
+\includegraphics[scale=0.68]{lineal}
+% linea de tendencia
+La línea de regresión lineal es: 
+\begin{equation}
+    \boxed{\left(\frac{U}{U_{max}}\right)^{-1/2}=(4,43 \pm 0.23) \frac{1}{m}\cdot r + (0.73 \pm 0.11)}
+\end{equation}
+
+
+\section{Determinación valor de $\lambda$ y frecuencia}
+
+Para esta parte de la práctica, a través de la sonda, medimos los valores de intensidad nula (donde encontramos un nodo) y los valores de frecuencia máxima (donde encontramos un vientre de la onda):
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.78]{tablabien.PNG}
+\end{figure}
+Utilizamos una placa de metal para que la onda incidente se refleje y así poder obtener una onda estacionaria, que será la suma entre la incidente y la reflejada\\
+\\
+
+
+Para medir el valor de la longitud de onda de la onda electromagnética, calculamos la distancia que hay entre nodo y nodo y entre vientre y vientre. Esta distancia representa la mitad de la longitud de onda, por lo que lo multiplicaremos por 2. \\
+\\
+
+
+\begin{figure}[H]
+\centering
+\caption{Cálculo del valor de la longitud de onda calculados mediante distancia entre nodos $\lambda_n$ y calculados mediante distancia entre vientres $\lambda_v$}
+\includegraphics[scale=0.68]{lambdabien.PNG}
+\end{figure}
+
+
+El valor final de la longitud de onda lo calculamos a través de la media aritmética entre todos los valores obtenidos:
+
+$$\boxed{\lambda=(0.032\pm 0.003) m}$$
+\\
+\\
+
+Para hallar la frecuencia usamos la fórmula $$\lambda = \frac{c}{f}$$ donde $c$ es el valor de la velocidad de la luz $c=3\cdot 10^8 m/s$ 
+
+$$\boxed{f=(8.9 \pm 0.9) GHz }$$
+
+\subsection{Representación de los valores y comparación con función sinusoidal}
+La intensidad de la onda electromagnética se comporta como una función sinusoidal de la forma  $\sin^2\left(\frac{2\pi r}{\lambda}\right)$
+
+Para comprobar si las medidas cumplen la función, comprobamos los valores obtenido con los nodos y con los vientres. La función seno oscila entre 0 y 1. \\
+\\
+Para obtener resultados entre 0 y 1 normalizamos los valores del voltaje, es decir, dividimos el valor del voltaje entre el valor máximo de este y así comprobar si se cumple el comportamiento sinusoidal \footnote{Debido a que en el laboratorio no hemos podido medir los valores de voltaje entre nodo y vientre, lo haremos de esta forma}
+
+\begin{figure}[H]
+\caption{Valores de voltaje para cada distancia nodo y vientre normalizados}
+\centering
+\includegraphics[scale=0.68]{nodosyvientresn.PNG}
+\end{figure} 
+
+A continuación representamos gráficamente los puntos 
+
+\begin{figure}[H]
+\centering
+\caption{Representación de valores máximos y mínimos de voltaje de nodos y vientres normalizados}
+\includegraphics[scale=0.68]{grafnodovientre.PNG}
+\end{figure}
+
+
+\section{Reflexión de ondas electromagnéticas}
+A continuación queremos medir el coeficiente de reflexión de diferentes materiales (metal y corcho ) para ello hemos tenido que medir la intensidad de la onda estacionaria generada y la intensidad de la onda incidente. \\
+Con estos dos resultados podemos deducir la intensidadd de la onda resultada por el material de la forma $\sqrt{U_r}=\sqrt{U_s}-\sqrt{U_i}$\\ 
+\\
+Una vez obtenido la intensidad de la onda reflejada y la incidente podemos obtener el coeficiente de reflexión correspondiente ya que este es igual a :
+$r=\sqrt{U_r/U_i}$
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.68]{tablametal.PNG}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.68]{tablacorcho.PNG}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Discusión}
+
+\subsection{Proporcionalidad intensidad y distancia}
+Observando las gráficas obtenidas podemos razonar que el resultado obtenido está dentro de lo esperado. La representación del voltaje normalizado frente a la distancia decae siguiendo la función $1/r^2$. Esto es debido a que, experimentalmente sabemos que la onda electromagnética emitida por el emisor en el rango de las microondas tiene un frente de ondas de superficies de una esfera  $4\pi r^2$por lo que la dependencia de la intensidad a de ser proporcional a $1/r^2$. 
+\\
+\\
+En nuestro caso, la regresión de nuestros valores sigue la forma de $y=0,414\cdot x^{-1,42} \implies x^{-1,42}$ , siendo un error relativo del 29\% con un coeficiente de Pearson de $R^2$=0,9439. Esta diferencia puede ser justificada por los posibles errores humanos cometidos durante la toma de datos, como una falta de precisión tomando las distancias y las medidas, interferencia en las ondas debido a agentes externos o debido a la gran fluctuabilidad de los valores del voltímetro. 
+\\
+\\
+
+Por otro lado, al representar $(U/UMax)^{-1/2}$frente a la distancia, por consiguiente, obtendremos una estimación lineal de los resultados de la cual obtenemos que la posición de la fuente virtual es $a=0,770,12 m$ respecto del origen. Esta estimación tiene como coeficiente de Pearson $R^2=0,9347$.
+
+\subsection{Ondas estacionarias en rango de microondas}
+Comparando el resultado obtenido de la longitud de onda $\lambda=(0,032 \pm 0,003)m$ con el de una de microondas vemos que este entra dentro de este margen que se encuentra entre 1 m y 10 mm por lo que podemos dar por válida esta medida ya que por otro lado al obtener la longitud de onda mediante la diferencia nodo-nodo y vientre-vientre obtenemos el mismo resultado.De dicha longitud de onda obtenemos su frecuencia correspondiente que comparando con distintas frecuencias corresponde con la banda x de microondas esta se mueve en un rango de 8 a 12 Ghz.
+\\
+\\
+
+Para la segunda parte debemos de observar la gráfica en la que vemos que de forma global,los nodos y los vientres medidos de forma experimental se asemeja a una forma sinusoidal ,debemos de tener en cuenta que hemos seleccionado solo los máximos  , esta diferencia que vemos en algunos puntos puede ser debido a la sensibilidad del sonda ya que pequeñas diferencias como por ejemplo de orientación pueden suponer una gran diferencia en la medida, por otro lado también puede influir la reflexión de la onda en agente externos como puede ser en nuestra persona en la toma de datos.
+
+\subsection{Reflexión de ondas electromagnéticas}
+
+
+Los resultados obtenidos en la toma de datos de la reflexión de onda son coherentes con los resultados esperados:
+
+\begin{itemize}
+\item Reflexión Metal: $r=0.779 \pm 0.021 \implies r=(77.9 \pm 2.1)\% $
+\item Reflexión Corcho: $r=0.33 \pm 0.18 \implies r=(33\pm 18)\%$
+Estos resultados ponen en evidencia la capacidad de retrorreflexión de estos materiales, por un lado vemos como el metal ha sido capaz de reflejar una gran cantidad de la intensidad de onda incidente, haciendo, por consiguiente, que la intensidad de la onda estacionaria sea mayor que en el corcho. 
+\\
+\\
+Por otro lado, es destacable y evidente que los resultados de las intensidades obtenidos para ambos casos no tienen un sentido físico.
+\end{itemize}
+
+Sabemos que la intensidad resultante de una onda estacionaria con un r=100\% tendrá un $I_s=2I_i$ pero nunca mayor, como sucede en el caso del metal que llega a triplicar la intensidad incidente, y con el corcho, el cual debería ser menor que la intensidad incidente.\\
+\\
+
+ Estos resultados podrían ser justificados por los errores humanos mencionados con anterioridad donde han podido ser más flagrantes en esta última parte de la práctica o una mala calibración de la sonda. Esta última justificación puede que sea más probable debido a que los resultados anteriores no se han visto modificados de esta manera, es por ello que podemos suponer que en la sonda estuviera tomando unos datos erróneos por un factor de escala, de esta manera, podemos garantizar que los coeficientes de reflexión calculados son correctos y, podríamos tomar los resultados teóricos de las intensidades.
+
+\begin{itemize}
+\item Intensidad Metal: Error relativo es del $102,6\%$-
+$$Teorico U_s/U_i= 1.56$$
+$$Experimental: U_s/U_i=3.16$$
+\item Intensidad Corcho: Error relativo 166,7 \%
+$$Teorico U_s/U_i= 0.66$$
+$$Experimental: U_s/U_i=1.76$$
+
+
+\end{itemize}
+Sin embargo,si los comparamos entre ambos materiales,los resultados obtenidos son coherentes, ya que la intensidad de la onda estacionaria detectada para el metal es mayor que la del corcho, teniendo una relación $U_{Ms}/U_{CS}=2,15$, mientras que, tomando los coeficientes de reflexión obtenido, esta relación debería de ser $U_{Ms Teorico}/U_{CS Teorico} =2,36$, por lo que el error relativo es de tan solo un 21\%.
+
+
+ \section{Conclusión}
+ 
+ Tras la realización de esta práctica hemos podido comprobar la evidencia de que la radiación incidente se comporta como una onda electromagnética. Al calcular $\lambda$ hemos podido obtener la frecuencia de esta radiación, obteniendo una frecuencia compatible con el espectro de radiación de ondas de microondas ($10^8 Hz$ a $10^{12} Hz$). \\
+ \\
+ También hemos podido comprobar el comportamiento de la onda cuando es reflejada por un material, siendo esta resultante una onda estacionaria con nodos y vientres medidos experimentalmente.
+ \\
+ Por último, hemos puesto de manifiesto la capacidad de retroreflexión de distintos materiales, esto es, hemos sido capaces de medir el coeficiente de reflexión del metal y del corcho, llegando a la conclusión de que el corcho absorbe una mayor cantidad de energía que el metal, siendo este más retroreflexivo. \\
+ \\
+ En conjunto podemos decir que aunque no hayamos tenido resultados precisos, los comportamientos físicos cuestionados eal principio, han sido comprobados mediante esta experiencia.   
+
+\hfill \vfill
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\onecolumn{
+\section{Anexo}
+
+\begin{table}[htbp]
+\centering
+\caption{ Comprobación de la proporcionalidad inversa del cuadrado de la distancia frente a la intensidad }
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$(d \pm 0.001 m)$ & $(U\pm 0.01 V)$ & U/Umax & $\Delta (U/Umax)$ & $U^{-1/2} (V^{-1/2})$ & $\Delta U^{-1/2} (V^{-1/2})$  \\ \hline
+0,790 & 0,32 & 0,0286 & 0,0009 & 5,92 & 0,10 \\ 
+0,770 & 0,31 & 0,0277 & 0,0009 & 6,01 & 0,10 \\ 
+0,750 & 0,91 & 0,0813 & 0,0009 & 3,508 & 0,020 \\ 
+0,730 & 0,71 & 0,0634 & 0,0009 & 3,97 & 0,03 \\ 
+0,710 & 0,66 & 0,0589 & 0,0009 & 4,12 & 0,04 \\ 
+0,690 & 0,69 & 0,0616 & 0,0009 & 4,03 & 0,03 \\ 
+0,670 & 0,85 & 0,0759 & 0,0009 & 3,63 & 0,03 \\ 
+0,650 & 1,23 & 0,1098 & 0,0009 & 3,018 & 0,013 \\ 
+0,630 & 1,08 & 0,0964 & 0,0009 & 3,220 & 0,015 \\ 
+0,610 & 1,00 & 0,0893 & 0,0009 & 3,347 & 0,017 \\ 
+0,590 & 0,93 & 0,0830 & 0,0009 & 3,470 & 0,019 \\ 
+0,570 & 1,02 & 0,0911 & 0,0009 & 3,314 & 0,017 \\ 
+0,550 & 1,20 & 0,1071 & 0,0009 & 3,055 & 0,013 \\ 
+0,530 & 1,13 & 0,1009 & 0,0009 & 3,148 & 0,015 \\ 
+0,510 & 1,26 & 0,1125 & 0,0009 & 2,981 & 0,012 \\ 
+0,490 & 1,05 & 0,0938 & 0,0009 & 3,266 & 0,016 \\ 
+0,470 & 1,02 & 0,0911 & 0,0009 & 3,314 & 0,017 \\ 
+0,450 & 1,52 & 0,1357 & 0,0010 & 2,714 & 0,010 \\ 
+0,430 & 1,83 & 0,1634 & 0,0010 & 2,474 & 0,008 \\ 
+0,410 & 2,01 & 0,1795 & 0,0010 & 2,361 & 0,007 \\ 
+0,390 & 1,90 & 0,1696 & 0,0010 & 2,428 & 0,007 \\ 
+0,370 & 2,16 & 0,1929 & 0,0010 & 2,277 & 0,006 \\ 
+0,350 & 2,31 & 0,2063 & 0,0010 & 2,202 & 0,005 \\ 
+0,330 & 2,59 & 0,2313 & 0,0010 & 2,080 & 0,005 \\ 
+0,310 & 2,13 & 0,1902 & 0,0010 & 2,293 & 0,006 \\ 
+0,290 & 2,35 & 0,2098 & 0,0010 & 2,183 & 0,005 \\ 
+0,270 & 2,37 & 0,2116 & 0,0010 & 2,174 & 0,005 \\ 
+0,250 & 2,86 & 0,2554 & 0,0010 & 1,979 & 0,004 \\ 
+0,230 & 3,43 & 0,3063 & 0,0010 & 1,807 & 0,003 \\ 
+0,210 & 4,71 & 0,4205 & 0,0010 & 1,5421 & 0,0018 \\ 
+0,190 & 5,55 & 0,4955 & 0,0010 & 1,4206 & 0,0015 \\ \hline
+\end{tabular}
+\label{}
+\end{table}
+ pero no jajaja , porqué?, no lo sé
+
+}
+
+
+
+
+
+
+
+
+
+\end{document}

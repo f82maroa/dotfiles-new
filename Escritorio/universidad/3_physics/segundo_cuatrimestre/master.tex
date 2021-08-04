@@ -1,0 +1,116 @@
+%	Este documento pretende ser una guía para la relización de apuntes tomados en clase.
+%
+%	ES NECESARIO XeLaTeX PARA COMILAR ESTE ARCHIVO.
+%	Plantilla de apuntes realizada por
+%	Ismael Aderdor Domingo <aderdor@gmail.com>
+%	
+%	Para más detalles acerca de las licencias que cubren cada archivo, por favor
+%	revise el archivo LICENCIAS.md
+%
+%
+%
+
+\documentclass[10pt,a4paper]{report}
+
+\NewDocumentCommand{\myrule}{O{1pt} O{2pt} O{black}}{%
+      \par\nobreak % don't break a page here
+        \kern\the\prevdepth % don't take into account the depth of the preceding line
+          \kern#2 % space before the rule
+            {\color{#3}\hrule height #1 width\hsize} % the rule
+              \kern#2 % space after the rule
+                \nointerlineskip % no additional space after the rule
+            }
+%Carga los paquetes de paquetes.sty
+
+
+\usepackage{sty/paquetes}
+\usepackage{sty/comandos}
+\usepackage{tikz,lipsum,lmodern}
+\usepackage[most]{tcolorbox}
+
+%======================================================================================================
+%
+%	Comienzo del documento
+%
+%======================================================================================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LO,RE]{\leftmark}
+\fancyhead[LE,RO]{\includegraphics[scale=0.08]{img/ucm.png}}
+\rfoot{Página \thepage\  de \pageref{LastPage} }
+\cfoot{}
+
+
+\begin{document}
+
+%	Página del título
+\begin{titlepage}
+    \begin{center}
+        \textbf{\LARGE Universidad Complutense de Madrid}\\[0.5cm] 
+        \textbf{\large Facultad de Ciencias Físicas}\\[0.2cm]
+        \vspace{20pt}\includegraphics[width=5cm]{img/ucm.png}\\
+        \par
+        \vspace{20pt}
+          \textbf{\Large Grado en Física}\\
+          \vspace{15pt}
+          \myrule[1pt][7pt]
+          \textbf{\LARGE  Apuntes de verano}\\
+          \vspace{15pt}
+          \textbf{\large Tercero de Física}\\
+          \myrule[1pt][7pt]
+          \vspace{35pt}
+          \textbf{\large Nombre \hspace{100pt} Mail}\\
+          \vspace{15pt}
+          Álvaro Martín Romero \hspace{50pt} \textcolor{blue}{\textit{f82maroa@uco.es}} \\ 
+
+
+          \vspace{70pt}  
+          \textbf {\large Descripción:}\\[0.2cm]
+          \Large {Resumen de asignaturas estudiadas en verano de 2021}\\[0.1cm]
+      \end{center}
+
+      \par
+      \vfill
+      \begin{center}
+          \textbf{Dedicado a mi neni que me ha apoyado mucho este curso. Te quiero .}\\
+      \end{center}
+
+  \end{titlepage}
+  \thispagestyle{fancy}
+
+
+
+%	Algunas cosas tienen que ir antes del índice
+
+
+%	Crea el índice
+
+
+\tableofcontents
+
+%\subfile{tex/prefacio}
+
+%	Reinicia la numeración de páginas y la hace en números arábigos
+% asignaturas
+
+
+% 	Chuletario
+
+%\input{tex/#electromagnetismoII}
+
+%\input{tex/circuitos}
+%\input{tex/#cuanticaII.tex}
+%	Comienza la inclusión de cada tema
+\input{tex/estadistica.tex}
+\input{tex/relatividad.tex}
+%\input{tex/relatividad}
+%\input{tex/Tema1}
+
+%\input{tex/Tema2}
+%\input{tex/Tema3}
+%\input{tex/Tema4}
+%\input{tex/Tema5}
+%\input{tex/Tema6}
+%\input{tex/Tema7}
+\appendix
+\end{document}

@@ -1,0 +1,142 @@
+\documentclass[11pt,letterpaper,onecolumn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{verbatim}
+\usepackage{mwe}
+\usepackage{charter}
+\usepackage{afterpage}
+\usepackage{amsmath}
+\usepackage{appendix}
+\usepackage{ragged2e}
+\usepackage{array}
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{arydshln}
+\usepackage[justification=justified,singlelinecheck=false,labelfont=bf,format=plain]{caption}
+\usepackage[justification=justified,singlelinecheck=false,labelfont=bf,format=plain]{subcaption}
+\usepackage{enumitem}
+\usepackage[bottom=2.5cm,top=2.0cm,left=2.0cm,right=2.0cm]{geometry}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{pdfpages}
+
+\usepackage{subfiles}
+\usepackage[compact]{titlesec}
+\usepackage{blindtext}
+\usepackage{stfloats}
+\usepackage{lipsum} 
+
+
+\renewcommand{\familydefault}{\rmdefault}
+
+\newcommand\blankpage{
+    \null
+    \thispagestyle{empty}
+    \addtocounter{page}{0}
+    \newpage}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\arraybackslash\hspace{0pt}}m{#1}}
+
+    \setlist[itemize,1]{label=$\bullet$}
+    \setlist[itemize,2]{label=$\circ$}
+    \setlist[itemize,3]{label=$-$}
+    \setlist{nosep}
+
+\setlength{\columnsep}{30pt}
+
+\titlelabel{\thetitle.\quad}
+
+\pagestyle{fancy}
+\fancyhf{}
+      
+\fancyfoot{}
+\fancyfoot[C]{\thepage} % page
+\renewcommand{\headrulewidth}{0mm} % headrule width
+\renewcommand{\footrulewidth}{0mm} % footrule width
+
+\makeatletter
+\patchcmd{\headrule}{\hrule}{\color{black}\hrule}{}{} % headrule
+\patchcmd{\footrule}{\hrule}{\color{black}\hrule}{}{} % footrule
+\makeatother
+
+\definecolor{blueM}{cmyk}{1.0,0.49,0.0,0.47}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chead[C]{
+      \begin{tabular}{m{1.5cm}m{11.5cm}m{2.5cm}}
+      \includegraphics[height=1.5cm]{logo.png}
+      &
+      \centering
+     \fcolorbox{white}{white}{\fbox{\begin{minipage}{11.5cm}
+     \centering
+     \textcolor{blueM}{ Prácticas Evaluación Financiera}
+     \end{minipage}}}
+         &
+        \centering
+         \tiny{ \vspace{3.5mm} Grado en Física \\  %para usar en otras carreras consulte a su coordinador
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+             %elija el que corresponda ejemplo :  Modular : I
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            Página \thepage \hspace{1pt} de 2
+          }\tabularnewline
+%          \hline
+          \end{tabular}%
+    }
+    
+\begin{document}
+
+
+\hspace{25pt}
+\begin{minipage}{0.75\textwidth}
+\begin{center}
+	
+	\vspace{5mm}
+
+	\Large{\textbf{Asignatura de Proyectos. 3º Física}} %
+    \\ 
+    \large{\textbf{Martín Romero, Álvaro}. \textcolor{blueM}{f82maroa@uco.es}} % Si solo hay un autor borrar el apartado sin borrar el ultimo }\\ 
+   \\ 
+    \vspace{2mm}
+    \fontsize{0.35cm}{0.5cm}\selectfont \textit{Departamento de Física, UCO, Universidad de Córdoba}
+    \vspace{1mm} 
+    
+    \today % FECHA
+
+\end{center}
+\end{minipage}
+
+\small
+
+\vspace{11pt}
+
+\centerline{\rule{0.95\textwidth}{0.4pt}}
+
+\begin{center}
+    
+    \begin{minipage}{0.9\textwidth}
+        % RESUMEN
+	    \noindent \textbf{Resumen:} En estas prácticas pondremos en práctica los conocimientos adquiridos en clase sobre los métodos de reconocimiento de rentabilidad de proyectos financieros. Calcularemos variables como la \textbf{TIR}, \textbf{VAN} o el coeficiente \textbf{Q} y demás datos, en vez de a mano como hicimos en clase, en hojas de cálculo.
+    
+        \vspace{4mm}
+        % PALABRAS CLAVE
+    
+    \end{minipage}
+    
+\end{center}
+\centerline{\rule{0.95\textwidth}{0.4pt}}
+\vspace{15pt}
+hola
+\section{Ejercicio 1}%
+\label{sec:Ejercicio 1}
+hola
+\end{document}
+

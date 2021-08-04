@@ -1,0 +1,99 @@
+\ProvidesPackage{sty/paquetes}
+
+%	Adecuación a la tipografía española
+
+
+%	Modificación de márgenes
+
+\usepackage[
+a4paper,            % Tamaño de hoja A4
+margin=2cm,         % Márgenes
+top=10mm,           % Margen superior
+bottom=20mm,        % Margen inferior
+includehead,        % Incluir el encabezado al calcular el margen
+includefoot,        % Incluir el pie de página al calcular el margen
+headheight=55pt     % Empezamos el texto a 50pt del borde superior para dar cabida al encabezado de tres líneas
+]{geometry} 
+
+%	Paquetes de utilidad matemática y física
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{lastpage} 
+\usepackage{physics}
+
+%	Carga de imágenes
+
+\usepackage{graphicx}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+citecolor=blue,
+filecolor=blue,
+linkcolor=blue,
+urlcolor=purple
+		    }
+%	Gráficos
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,snakes,shapes,circuits.ee.IEC}
+\usepackage{pgfplots}
+\pgfplotsset{compat = newest}
+
+
+%	Selección de tipos de letra
+
+
+%	Facilita la navegación por el pdf
+
+
+%	Hace un documento con varias columnas
+
+\usepackage{wrapfig}
+\usepackage{multicol}
+\usepackage{float}	%Evita problemas con los elementos flotantes en multicol.
+\setlength{\columnsep}{1cm}
+
+%	Carga los documentos de la carpeta de capitulos
+
+\usepackage{subfiles}
+\usepackage{extramarks}
+
+
+
+\usepackage[spanish]{babel}
+\addto\captionsspanish{
+    \renewcommand{\partname}{Libro}
+    \renewcommand{\chaptername}{}
+}
+
+
+
+\usepackage{titlesec}
+
+\titleformat
+{\chapter} % command
+[display] % shape
+{\bfseries\Large\itshape} % format
+{Asignatura No. \ \thechapter} % label
+{0.5ex} % sep
+{
+        \rule{\textwidth}{1pt}
+            \vspace{1ex}
+                \centering
+            } % before-code
+            [
+            \vspace{-0.5ex}%
+            \rule{\textwidth}{0.8pt}
+            ] % after-code
+
+
+
+
+
+\newtheorem{mydef}{Definition}
+\usepackage{tikz,lipsum,lmodern}
+\usepackage[most]{tcolorbox}
+

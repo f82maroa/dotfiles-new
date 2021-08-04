@@ -1,0 +1,57 @@
+%
+%
+%	Este documento pretende ser una guía para la relización de apuntes tomados en clase.
+%
+%	ES NECESARIO XeLaTeX PARA COMILAR ESTE ARCHIVO.
+%
+%
+%	Plantilla de apuntes realizada por
+%	Ismael Aderdor Domingo <aderdor@gmail.com>
+%	
+%	Para más detalles acerca de las licencias que cubren cada archivo, por favor
+%	revise el archivo LICENCIAS.md
+%
+%
+%
+
+\documentclass[10pt,a4paper]{report}
+
+
+%Carga los paquetes de paquetes.sty
+
+
+\usepackage{sty/paquetes}
+
+%======================================================================================================
+%
+%	Comienzo del documento
+%
+%======================================================================================================
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\begin{document}
+
+%	Página del título
+
+
+
+%	Crea el índice
+
+\tableofcontents
+\newpage
+
+% Comienzo de temas
+
+%\input{tex/chuletario}
+\input{tex/tema1}
+%\input{tex/tema2}
+%\input{tex/Tema3}
+%\input{tex/Tema4}
+%\input{tex/Tema5}
+%\input{tex/Tema6}
+%\input{tex/Tema7}
+\appendix
+\end{document}

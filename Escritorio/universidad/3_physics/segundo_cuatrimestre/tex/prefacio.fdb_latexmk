@@ -1,0 +1,17 @@
+# Fdb version 3
+["pdflatex"] 1626033110 "/home/alvaromr/Escritorio/university/3_physics/segundo_cuatrimestre/tex/prefacio.tex" "/home/alvaromr/Escritorio/university/3_physics/segundo_cuatrimestre/tex/prefacio.pdf" "prefacio" 1626033110
+  "../cc.tex" 0 -1 0 ""
+  "/etc/texmf/web2c/texmf.cnf" 1617030996 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/alvaromr/Escritorio/university/3_physics/segundo_cuatrimestre/tex/../cc.tex" 0 -1 0 ""
+  "/home/alvaromr/Escritorio/university/3_physics/segundo_cuatrimestre/tex/prefacio.aux" 1626033110 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/home/alvaromr/Escritorio/university/3_physics/segundo_cuatrimestre/tex/prefacio.tex" 1621840821 3039 7e9e192a069a5d43e07000aca58d5da5 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/import/import.sty" 1586645574 6201 0ad8b5da8e12f60a88d546b2198a56f2 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.cls" 1605478891 1507 57de335d88fde4e5c924dfed577fdb74 ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1613593815 38841 799d1dd9682a55ce442e10c99777ecc1 ""
+  "/usr/share/texmf/web2c/texmf.cnf" 1613593815 38841 799d1dd9682a55ce442e10c99777ecc1 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1617044235 2571330 1a7b410676dc18ff75021c9cc12332c6 ""
+  "prefacio.tex" 1621840821 3039 7e9e192a069a5d43e07000aca58d5da5 ""
+  (generated)
+  "/home/alvaromr/Escritorio/university/3_physics/segundo_cuatrimestre/tex/prefacio.pdf"
+  "/home/alvaromr/Escritorio/university/3_physics/segundo_cuatrimestre/tex/prefacio.log"
+  "prefacio.log"
