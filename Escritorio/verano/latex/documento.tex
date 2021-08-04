@@ -1,0 +1,65 @@
+\documentclass[12pt,oneside]{article}
+
+%       PAQUETERÍA      
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{helvet}
+\usepackage{lastpage} 
+\usepackage{graphicx}
+\usepackage[
+a4paper,            % Tamaño de hoja A4
+margin=2cm,         % Márgenes
+top=10mm,           % Margen superior
+bottom=20mm,        % Margen inferior
+includehead,        % Incluir el encabezado al calcular el margen
+includefoot,        % Incluir el pie de página al calcular el margen
+headheight=55pt     % Empezamos el texto a 50pt del borde superior para dar cabida al encabezado de tres líneas
+]{geometry}
+\usepackage{xcolor}
+\usepackage{fancyhdr} 
+
+
+%       NUEVOS COMANDOS
+%               Estilo de página
+\pagestyle{fancy}
+% Nombre del documento (puede ser: Apuntes, Actividades, Examen, Documento, Trabajo, Criterios…) 
+\newcommand{\nombreDocumento}{Apuntes}
+% Nombre de la Unidad en concreto
+\newcommand{\nombreUnidad}{Tema 4}
+% Nombre del módulo (asignatura)
+\newcommand{\nombreModulo}{Física Estadística}
+\definecolor{light-gray}{gray}{0.15}
+
+
+
+%       ENCABEZADO
+
+\lhead{
+        {\color{light-gray} \small \nombreDocumento}    \\
+        {\color{light-gray} \small \nombreUnidad}       \\
+        \color{light-gray} \nombreModulo
+}
+\rhead{\includegraphics[width=2.25cm]{Logo.png}}
+
+%                Cambio de color de la línea de encabezado
+
+\let\oldheadrule\headrule % Copy \headrule into \oldheadrule
+\renewcommand{\headrule}{\color{light-gray}\oldheadrule} % Add colour to \headrule
+%       PIE DE PÁGINA
+\rfoot{Página \thepage\ de \pageref{LastPage}}  % Número de página
+\cfoot{} % Eliminamos el número central del estilo fancy original
+
+
+
+%   COMIENZO DEL DOCUMENTO  
+
+
+\begin{document}
+\tableofcontents
+
+\newpage
+\section{Primer tema}%
+\label{sec:Primer tema}
+
+\end{document}

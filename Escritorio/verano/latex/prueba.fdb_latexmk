@@ -1,0 +1,18 @@
+# Fdb version 3
+["pdflatex"] 1628024983 "prueba.tex" "prueba.pdf" "prueba" 1628026230
+  "/etc/texmf/web2c/texmf.cnf" 1617030996 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls" 1601675358 20145 aad8c3dd3bc36e260347b84002182bc2 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1601675358 8449 a72d5d4e612221b46000c3d71724e0ef ""
+  "/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1611959857 27097 58278863d97b10ab86e334b8da33df7a ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1613593815 38841 799d1dd9682a55ce442e10c99777ecc1 ""
+  "/usr/share/texmf/web2c/texmf.cnf" 1613593815 38841 799d1dd9682a55ce442e10c99777ecc1 ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1617044189 5160710 ecf427ae8fa19139d8691f526e47bb9b ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1626337011 2569940 e68736691c0cfaaabe8452690908077a ""
+  "prueba.aux" 1628024983 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "prueba.tex" 1628024983 111 ae22a204b74465444b06fc611f588f8d ""
+  (generated)
+  "prueba.log"
+  "prueba.aux"
+  "prueba.pdf"
