@@ -1,0 +1,3 @@
+read (fzf)
+
+echo $hola
