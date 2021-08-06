@@ -1,0 +1,75 @@
+\documentclass[10pt,a4paper,twocolumn]{report}
+
+\NewDocumentCommand{\myrule}{O{1pt} O{2pt} O{black}}{%
+      \par\nobreak % don't break a page here
+        \kern\the\prevdepth % don't take into account the depth of the preceding line
+          \kern#2 % space before the rule
+            {\color{#3}\hrule height #1 width\hsize} % the rule
+              \kern#2 % space after the rule
+                \nointerlineskip % no additional space after the rule
+            }
+%Carga los paquetes de paquetes.sty
+
+
+\usepackage{sty/paquetes}
+\usepackage{sty/comandos}
+\usepackage{tikz,lipsum,lmodern}
+\usepackage[most]{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage{multicol}
+\usepackage{color}
+\setlength{\columnseprule}{1pt}
+\def\columnseprulecolor{\color{red}}
+\makeatother
+%======================================================================================================
+%
+%	Comienzo del documento
+%
+%======================================================================================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LO,RE]{\leftmark}
+\fancyhead[LE,RO]{\includegraphics[scale=0.08]{img/ucm.png}}
+\rfoot{Página \thepage\  de \pageref{LastPage} }
+\cfoot{}
+
+
+\begin{document}
+
+%	Página del título
+
+\input{portada}
+  
+  \thispagestyle{fancy}
+
+
+
+%	Algunas cosas tienen que ir antes del índice
+
+
+%	Crea el índice
+
+
+\tableofcontents
+
+%\subfile{tex/prefacio}
+
+%	Reinicia la numeración de páginas y la hace en números arábigos
+% asignaturas
+
+
+% 	Chuletario
+
+%\input{tex/#electromagnetismoII}
+
+%\input{tex/circuitos}
+%\input{tex/#cuanticaII.tex}
+%	Comienza la inclusión de cada tema
+\input{tex/electromagnetismoI}
+%\input{tex/mmc.tex}
+%\input{tex/estadistica.tex}
+%\input{tex/cuanticaI.tex}
+\appendix
+\end{document}
+
