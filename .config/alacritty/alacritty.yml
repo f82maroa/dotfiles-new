@@ -14,7 +14,7 @@ env:
   LANG: "en_US.UTF-8"
   LC_CTYPE: en_US.UTF-8
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -35,9 +35,9 @@ env:
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  #padding:
-  #  x: 0
-  #  y: 0
+ padding:
+    x: 0
+    y: 4
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -138,7 +138,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 9.5
+  size: 8.5
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -176,7 +176,8 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#282c34'
+    background: "#282828"
+      # '#282c34'
     foreground: '#eaeaea'
 
     # Bright and dim foreground colors
