@@ -138,13 +138,13 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 8.5
+  size: 9
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
-  #offset:
-  #  x: 0
-  #  y: 0
+  offset:
+    x: 0
+    y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
@@ -600,7 +600,7 @@ colors:
     green:   '0xec9b5d'
     yellow:  '0xe6b24c'
     blue:    '0xf3b78b'
-    magenta: '0xfadca4'
-    cyan:    '0xf5efde'
+    magenta: '0xffd700'
+    cyan:    '0xff5500'
     white:   '0xffffff'
 background_opacity : 0.8
