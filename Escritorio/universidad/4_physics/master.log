@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.7.15)  6 AUG 2021 02:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.7.15)  7 AUG 2021 11:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1282,7 +1282,7 @@ LaTeX Info: Redefining \. on input line 38.
 LaTeX Info: Redefining \% on input line 38.
 \c@lstlisting=\count365
 (./portada.tex
-<img/ucm.png, id=51, 600.3228pt x 678.3744pt>
+<img/ucm.png, id=63, 600.3228pt x 678.3744pt>
 File: img/ucm.png Graphic file (type png)
 <use img/ucm.png>
 Package pdftex.def Info: img/ucm.png  used on input line 5.
@@ -1341,10 +1341,25 @@ l.54 \tableofcontents
 
 ] (./tex/electromagnetismoI.tex
  1.
+) (./tex/mmc.tex [2
+
+
+
+]
+ 2.
+) (./tex/estadistica.tex [3
+
+
+]
+ 3.
+) (./tex/cuanticaI.tex [4
+
+
+]
+ 4.
 ) 
 AED: lastpage setting LastPage
-[2
-
+[5
 
 
 ] (./master.aux
@@ -1352,13 +1367,13 @@ LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
 Package rerunfilecheck Info: File `master.out' has not changed.
-(rerunfilecheck)             Checksum: EE15F969165AE83E1329F190993B8E67;126.
+(rerunfilecheck)             Checksum: 683E3E4A5774B8788C80F42362DA749E;309.
  ) 
 Here is how much of TeX's memory you used:
- 39757 strings out of 479304
- 955940 string characters out of 5869779
- 1543065 words of memory out of 5000000
- 56185 multiletter control sequences out of 15000+600000
+ 39779 strings out of 479304
+ 956196 string characters out of 5869779
+ 1543066 words of memory out of 5000000
+ 56192 multiletter control sequences out of 15000+600000
  438861 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,5n,115p,757b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1373,10 +1388,10 @@ f/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10
 type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/p
 ublic/lm/lmsy7.pfb>
-Output written on master.pdf (3 pages, 531601 bytes).
+Output written on master.pdf (6 pages, 537159 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
- 6 named destinations out of 1000 (max. 500000)
- 178 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 156 PDF objects out of 1000 (max. 8388607)
+ 108 compressed objects within 2 object streams
+ 12 named destinations out of 1000 (max. 500000)
+ 202 words of extra memory for PDF output out of 10000 (max. 10000000)
 
