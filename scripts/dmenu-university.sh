@@ -1,10 +1,9 @@
 
 #!/usr/bin/bash
 cd ~/Escritorio/universidad/4_physics/ 
-tiempo=0.5
-r=$(echo -e "electro\ncuantica\nf.estadistica\nmmc\nmaster\nprueba" | dmenu -i -p "Asignaturas" -nb black -fn "Iosevka Nerd Font-10" -sb "#ff5500")
+tipo=$(echo  "electro\ncuantica\nf.estadistica\nmmc\nmaster\nprueba" | dmenu -i -p "Asignaturas" -nb black -fn "Iosevka Nerd Font-10" -sb "#ff5500")
 
-case "$r" in
+case "$tipo" in
 	"electro") alacritty --command vim ~/Escritorio/universidad/4_physics/tex/electromagnetismoI.tex & echo X | latexmk -pvc -pdf ~/Escritorio/universidad/4_physics/master.tex;;
 	"cuantica") alacritty --command vim ~/Escritorio/universidad/4_physics/tex/cuanticaI.tex;;
 	"f.estadistica") alacritty --command vim ~/Escritorio/universidad/4_physics/tex/estadistica.tex;;
