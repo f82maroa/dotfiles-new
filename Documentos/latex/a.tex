@@ -1,0 +1,645 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+
+
+\title{Métodos matemáticos de la mecánica cuántica (resumen)}
+\author{Juan José Cosgaya Arrieta}
+\date{\today}
+
+%Márgenes y distancias
+\usepackage{vmargin}
+\usepackage{titlesec}
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}                           % espacio entre el texto y el pie de página
+
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{1em}
+\renewcommand{\thesection}{\arabic{section}}
+
+
+%Fancy
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{Física Cuántica I}
+\lhead{3º de Física}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+
+%Matematicas
+\usepackage{amsmath}
+\usepackage{braket}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{mathrsfs}
+\usepackage{nccmath}
+\usepackage{tensor}
+
+%------------------------------------------------
+%Teoremas
+%------------------------------------------------
+\usepackage{framed}
+\usepackage{mdframed}
+%\newtheorem{thm}{Teorema}
+\newmdtheoremenv[
+linewidth = 3pt,
+backgroundcolor = gray!30,
+topline = false,
+rightline = false,
+bottomline = false,
+]{thm}{Teorema}
+\newtheorem{prp}{Proposición}[thm]
+\newtheorem{definition}{Definición}
+\newenvironment{dft}[1][]
+    {\begin{leftbar}\begin{definition}[#1]}
+    {\end{definition}\end{leftbar}}
+\newtheorem{corllary}{Corolario}[thm]
+\newtheorem{lemma}{Lema}[thm]
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+
+%------------------------------------------------
+%Estilo de los capitulos, secciones, etc.
+%------------------------------------------------
+\usepackage[notquote]{hanging} %Para controlar las identaciones en los parrafos. Notquote hace que no pete esto al compilar, no se por qué.
+
+\titleformat{\chapter}[hang]{\Huge\bfseries}{Parte \thechapter\hspace{1ex}\textcolor{gray!75}{\rule[-5pt]{2.5pt}{0.9cm}}\hspace{1ex}}{0pt}{\Huge\bfseries}[\color{gray}\vspace{-2.7ex}\rule{\textwidth}{4pt}]
+\titlespacing*{\chapter}{0pt}{3ex}{10ex}
+
+\newmdenv[
+roundcorner = 0,
+backgroundcolor = gray!10,
+leftmargin = 0ex,
+innertopmargin = 0.2ex,
+innerbottommargin = 0.2ex,
+topline = false,
+rightline = false,
+bottomline = false,
+leftline = false]{sec1}
+\newcommand\secc[1]{
+\begin{sec1}
+\hangpara{3.5ex}{1}\thesection\hspace{1ex}\textcolor{gray!75}{\rule[-5pt]{2.5pt}{0.8cm}}\hspace{1ex}#1
+\end{sec1}}
+\titleformat{\section}{\Large\bfseries}
+{}
+{0pt}
+{\bfseries\secc}
+\titlespacing{\section}{0pt}{-3ex}{-10ex}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}
+  {\thesubsection}
+  {1em}
+  {}
+  [{\titlerule[0.8pt]}]
+
+
+%\titleformat{\chapter}[display]{\filcenter\Huge\scshape\bfseries}{\begin{tabularx}{\textwidth}{@{}XcX@{}}\titlerule[5pt]& \large\mdseries\raisebox{-1.05ex}{Parte\enspace\arabic{chapter}} & \titlerule[5pt]\end{tabularx}}{-4ex}{\rule{\textwidth}{1pt}\vspace{0ex} }[\vspace{-2ex}\endgraf\rule{\textwidth}{1pt}]
+%\titlespacing*{\chapter}{0pt}{3ex}{10ex}
+
+
+
+%\titleformat{\chapter} % command
+%[display] % shape
+%{\bfseries\Large} % format
+%{\centering \Huge Parte \thechapter} % label
+%{0.5ex} % sep
+%{
+    %\rule{\textwidth}{1pt}
+    %\vspace{1ex}
+    %\centering
+%} % before-code
+%[
+%\vspace{-4ex}%
+%\rule{\textwidth}{1pt}
+%] % after-code
+%Otros
+\usepackage{imakeidx} %Permite crear índices alfabéticos
+\usepackage{hyperref}
+\usepackage{float} %Con [H] las figuras se quedan fijas
+\usepackage{bm}
+\usepackage{pdfpages}
+\usepackage{listings} %Para introducir código
+\usepackage{xcolor} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows, babel, angles, quotes}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\spanishdecimal{.}
+
+
+\usepackage{tabularx}
+
+
+\begin{document}
+\renewcommand{\listtablename}{Índice de tablas}
+\renewcommand{\tablename}{Tabla}
+
+\maketitle
+% A incluir:
+%   Topología
+%       - Subconjunto denso
+%   Espacios de Bannach
+%       - Definición
+%       - Aplicaciones lineales
+%   Espacios de Hilbert
+%       - Definición
+%       - (Desigualdad de Cauchy-Schwartz)
+%       - Dual
+%       - Bases de Hamel y Schauder
+%       - Espacio de Hilbert separable
+%       - Proyectores
+%       - Lema de Riesz y notación de Dirac
+
+\chapter{Resumen útil para el examen}
+
+Como hay muchos conceptos y resultados repetidos con y sin notación de Dirac, he decidido hacer un resumen, empleando tan solo la notación de Dirac, del tema 4. \textbf{Nota}: Dada la similitud entre algunos resultados para bases discretas y continuas, se han omitido los de las continuas a propósito.
+
+\section{Espacio dual y producto escalar}
+A cada función de onda $\psi (\textbf{r})$ le hacemos corresponder un vector (ket) $\ket{\psi }\in\mathcal{H}$ de un espacio de Hilbert mediante un isomorfismo. A cada ket  $\ket{\psi }$ le asociamos un bra $\bra{\psi }$, que es un elemento del espacio dual de $\mathcal{H}$. Este elemento del espacio dual está determinado por el \textbf{producto escalar} que definimos como
+\begin{equation}
+	\Braket{\psi |\phi }=\int\mathrm{d}\textbf{r}^{3}\psi^{\ast}(\textbf{r})\phi (\textbf{r})
+\end{equation}
+El producto escalar cumple las siguientes propiedades:
+\begin{enumerate}
+	\item $\Braket{\psi |\psi}\geq 0$
+	\item $\Braket{\phi |\psi }=\Braket{\psi |\phi }^{\ast}$
+	\item $\Braket{\phi |\lambda_{1}\psi_{1}+\lambda_{2}\psi_{2} }=\lambda_{1}\Braket{\phi |\psi_{1} }+\lambda_{2}\Braket{\phi |\psi_{2}}$
+	\item $\Braket{\lambda_{1}\phi_{1}+\lambda_{2}\phi_{2} |\psi }=\lambda_{1}^{\ast}\Braket{\phi_{1} |\psi }+\lambda_{2}^{\ast}\Braket{\phi_{2} |\psi}$
+	\item $\Braket{\phi |\psi }^{2}\leq\Braket{\phi |\phi}\Braket{\psi |\psi}$ (desigualdad de Schwartz)
+\end{enumerate}
+
+Si queremos encontrar el bra asociado al ket $\ket{\psi }=\lambda_{1}\ket{\psi_{1}}+\lambda_{2}\ket{\psi_{2}}$ podemos usar la propiedad 4:
+\[ \Braket{\lambda_{1}\psi_{1}+\lambda_{2}\psi_{2} |\phi }=\lambda_{1}^{\ast}\Braket{\psi_{1} |\phi }+\lambda_{2}^{\ast}\Braket{\psi_{2} |\phi}=\left(\lambda_{1}^{\ast}\bra{\psi_{1}}+\lambda_{2}^{\ast }\bra{\psi_{2}}\right)\ket{\phi}\]
+Luego $\bra{\psi }=\lambda_{1}^{\ast}\bra{\psi_{1}}+\lambda_{2}^{\ast }\bra{\psi_{2}}$.
+
+
+
+\section{Bases ortonormales}
+\subsection{Discretas}
+Diremos que un conjunto numerable de vectores $\left\{ \ket{u_{1}},\ket{u_{2}},...\right\}$ es \textbf{ortonormal} si
+\begin{equation}
+	\Braket{u_{i}|u_{j}}=\delta_{ij}
+\end{equation}
+Diremos que es una \textbf{base} si todo vector $\ket{\psi }$ puede escribirse como combinación lineal (finita o infinita) única de dichos vectores:
+\begin{equation}
+	\ket{\psi }=\sum_{i=1}^{+\infty}c_{i}\ket{u_{i}}
+\end{equation}
+Cuando nuestra base es ortonormal, es fácil ver que
+\begin{equation}
+	c_{i}=\Braket{u_{i}|\psi}
+\end{equation}
+Si tomamos la expresión de $\ket{\psi }$ en la base e introducimos el valor de los $c_{i}$ 
+\[ \ket{\psi }=\sum_{i}\Braket{u_{i}|\psi }\ket{u_{i}}=\left( \sum_{i}\ket{u_{i}}\bra{u_{i}}\right)\ket{\psi} \]
+Vemos que el operador que actúa sobre $\ket{\psi }$ debe ser la unidad. A esto se lo conoce como \textbf{relación de cierre}:
+\begin{equation}
+	\sum_{i}\ket{u_{i}}\bra{u_{i}}=1
+\end{equation}
+Un conjunto de vectores $\left\{ \ket{u_{1}},\ket{u_{2}},...\right\}$ es una base ortonormal si y solo si verifica la relación de cierre.
+
+Podemos escribir el \textbf{producto escalar} de dos kets $\ket{\psi }$, $\ket{\phi }$, en función de sus componentes introduciendo la relación de cierre:
+\begin{equation}
+	\Braket{\phi |\psi }=\sum_{i}\Braket{\phi |u_{i}}\Braket{u_{i}|\psi}
+\end{equation}
+
+
+
+\subsection{Continuas}
+Un conjunto continuo de kets $\left\{ w_{\alpha}\right\}$, donde $\alpha $ es un parámetro continuo, se dice \textbf{ortonormal en el sentido de Dirac} si:
+\begin{equation}
+	\Braket{w_{\alpha }|w_{\alpha '}}=\delta (\alpha -\alpha ')
+\end{equation}
+Diremos que es una \textbf{base} si para todo $\ket{\psi }$ existe una función $c(\alpha )$ tal que
+\begin{equation}
+	\ket{\psi }=\int\mathrm{d}\alpha\ c(\alpha )\ket{w_{\alpha}}
+\end{equation}
+Por supuesto, si tenemos una base ortonormal continua
+\begin{equation}
+	c(\alpha )=\Braket{w_{\alpha }|\psi}
+\end{equation}
+La \textbf{relación de cierre en una base continua} la obtenemos como antes
+\[ \ket{\psi }=\int\mathrm{d}\alpha\ \Braket{w_{\alpha }|\psi}\ket{w_{\alpha}}=\left( \int\mathrm{d}\alpha\ \ket{w_{\alpha}}\bra{w_{\alpha }}\right)\ket{\psi} \]
+\begin{equation}
+	\int\mathrm{d}\alpha\ket{w_{\alpha }}\bra{w_{\alpha }}=1
+\end{equation}
+De nuevo podemos obtener el \textbf{producto escalar} en función de las componentes:
+\begin{equation}
+	\Braket{\phi |\psi }=\int\mathrm{d}\alpha\Braket{\phi |w_{\alpha}}\Braket{w_{\alpha}|\psi}
+\end{equation}
+
+Las bases correspondientes a la representación de coordenadas y momentos son:
+\begin{equation}
+	\ket{x_{0}}=\delta (x-x_{0})
+\end{equation}
+\begin{equation}
+	\ket{p_{0}}=\frac{1}{\sqrt{2\pi\hbar}}e^{\frac{i}{\hbar}p_0x}
+\end{equation}
+
+
+
+
+
+\section{Operadores lineales}
+Un operador lineal $A$ es una aplicación lineal $A:\mathcal{H}\to\mathcal{H}$. Se define el producto de operadores mediante la composición:
+ \begin{equation}
+	AB=A\circ B
+\end{equation}
+Como la composición de operadores no es conmutativa, podemos definir un nuevo operador llamado \textbf{conmutador de dos operadores}:
+\begin{equation}
+	\left[ A,B\right] =AB-BA
+\end{equation}
+El conmutador verifica las siguientes propiedades (demostración en un ejercicio de los seminarios):
+\begin{enumerate}
+    \item $[A,B]=-[B,A]$
+    \item $[A,B+C]=[A,B]+[A,C]$
+    \item $[A,BC]=B[A,C]+[A,B]C$
+    \item $[A,[B,C]]+[B,[C,A]]+[C,[A,B]]=0$
+    \item $[A,B]^\dagger =[B^\dagger ,A^\dagger ]$
+\end{enumerate}
+Cualquier conmutador conmuta con sí mismo y con sus potencias $[A,A^n]=0$. Por lo tanto conmuta con cualquier función $f(A)$ (si una función admite un desarrollo $f(x)=\sum f_n x^n$, se define $f(A)=\sum f_n A^n$).
+
+Es más, si $A$ conmuta con $B$, también lo hace con cualquier potencia de $B$ y con cualquier función de $B$. Esto se demuestra por inducción, aplicando la propiedad 3.
+
+Si dos operadores no conmutan entre sí, pero \textbf{conmutan con su conmutador} (ese es el caso de los operadores posición y momento) entonces
+\begin{equation}
+    [A,f(B)]=[A,B]f'(B)
+\end{equation}
+
+Dados un bra $\bra{\phi }$ y un ket $\ket{\psi }$, podemos construir un operador $\ket{\psi }\bra{\phi }$. En el caso particular $\ket{\psi }\bra{\psi }$, siendo $\ket{\psi }$ un ket normalizado ($\Braket{\psi |\psi}=1$), el operador que resulta es lo que se denomina \textbf{proyector}:
+\begin{equation}
+	P_{\psi }=\ket{\psi }\bra{\psi}
+\end{equation}
+Lo que hace este operador es proyectar un ket sobre el subespacio generado por $\ket{\psi }$. Como es evidente, $P_{\psi }^{2}=P_{\psi}$. Si tomamos $n$ kets  $\left\{ \ket{\psi_{1}},\ket{\psi_{2}},...,\ket{\psi_{n}}\right\}$ ortonormales ($\Braket{\psi_{i}|\psi_{j}}=\delta_{ij}$), se puede definir el \textbf{proyector sobre el subespacio} como
+\begin{equation}
+	P_{s}=\sum_{i=1}^{n}\ket{\psi_{i}}\bra{\psi_{i}}
+\end{equation}
+
+Si a un ket $\ket{\psi }$ le aplicamos un operador $A$, obtenemos un nuevo ket $\ket{\psi '}$. Las componentes de este ket en una base ortonormal vendrán dadas por
+\begin{equation}
+	\Braket{u_{i}|\psi '}=\bra{u_{i}}A\ket{\psi}=\sum_{j}\bra{u_{i}}A\ket{u_{j}}\Braket{u_{j}|\psi }
+\end{equation}
+\begin{equation}
+	\Braket{w_{\alpha}|\psi '}=\bra{w_{\alpha}}A\ket{\psi}=\int\mathrm{d}\beta\bra{w_{\alpha}}A\ket{w_{\beta}}\Braket{w_{\beta}|\psi }
+\end{equation}
+dependiendo de si la base es discreta o continua. A los números $A_{ij}=\bra{u_{i}}A\ket{u_{j}}$ y $A_{\alpha\beta }=\bra{w_{\alpha }}A\ket{w_{\beta}}$ los llamamos \textbf{elementos de matriz} del operador $A$.
+
+Si queremos ver cuales son los elementos de matriz del producto de dos operadores, no tenemos nada más que incluir la relación de cierre
+\begin{equation}
+	(AB)_{ij}=\bra{u_{i}}AB\ket{u_{j}}=\sum_{k}\bra{u_{i}}A\ket{u_{k}}\bra{u_{k}}B\ket{u_{j}}=\sum_{k}A_{ik}B_{kj}
+\end{equation}
+Esto no es sino el producto de matrices (solo que ahora tenemos matrices infinitas).
+
+Se define la \textbf{traza de un operador} como la suma de sus elementos diagonales en una base
+\begin{equation}
+    Tr(A)=\sum_i\bra{u_i}A\ket{u_i}
+\end{equation}
+Y por supuesto no depende de la base escogida
+\[ \sum_j\bra{v_j}A\ket{v_j}=\sum_j\sum_i\braket{v_j|u_i}\bra{u_i}A\ket{v_j}=\sum_j\sum_i\bra{u_i}A\ket{v_j}\braket{v_j|u_i}=\sum_i\bra{u_i}A\ket{u_i}\]
+También es inmediato usando la relación de cierre comprobar que la traza de $AB$ y de $BA$ es la misma
+\begin{equation}
+    Tr(AB)=Tr(BA)
+\end{equation}
+
+
+Si un operador depende de una variable continua $t$, podemos definir su \textbf{derivada} como
+\begin{equation}
+    \frac{\mathrm{d}A}{\mathrm{d}t}=\lim_{\Delta t\to 0}\frac{A(t+\Delta t)-A(t)}{\Delta t}
+\end{equation}
+y los elementos de matriz de la derivada son
+\begin{equation}
+    \left< u_i\left|\frac{\mathrm{d}A}{\mathrm{d}t}\right| u_j\right> =\frac{\mathrm{d}A_{ij}}{\mathrm{d}t}
+\end{equation}
+Y se cumplen las reglas de derivación usuales
+\begin{align}
+    & \frac{\mathrm{d}}{\mathrm{d}t}(A+B)=\frac{\mathrm{d}A}{\mathrm{d}t}+\frac{\mathrm{d}B}{\mathrm{d}t}\\
+    & \frac{\mathrm{d}}{\mathrm{d}t}(AB)=\frac{\mathrm{d}A}{\mathrm{d}t}B+A\frac{\mathrm{d}B}{\mathrm{d}t}
+\end{align}
+
+\section{Conjugación Hermítica}
+Hasta ahora hemos interpretado expresiones del tipo $\bra{\phi }A\ket{\psi }$ como un operador que actúa sobre $\ket{\psi }$ dando un nuevo ket $\ket{\psi '}$ al que le aplicamos $\bra{\phi }$. Pero podríamos considerar que $A$ actúa primero sobre $\phi $, dándonos un nuevo bra $\bra{\phi }$ (esto sigue siendo lineal, ya que el producto escalar lo es). Se define el \textbf{operador adjunto} de $A$, $A^{\dagger}$ como aquel que le asigna al bra $\bra{\psi }$ el bra correspondiente al ket $A\ket{\psi }$
+\begin{equation}
+	\ket{\psi '}=A\ket{\psi }\Longrightarrow \bra{\psi '}=\bra{\psi }A^{\dagger}
+\end{equation}
+De la segunda propiedad del producto escalar tenemos
+\[ \bra{\psi }A^{\dagger}\ket{\phi }=\Braket{\psi '|\phi}=\Braket{\phi |\psi '}^{\ast}=\bra{\phi }A\ket{\psi}^{\ast} \]
+Aplicando esto a los vectores de una base
+\begin{equation}
+	A_{ij}^{\dagger}=A_{ji}^{\ast}
+\end{equation}
+Lo que significa que la matriz de $A^{\dagger}$ se obtiene conjugando y transponiendo la matriz de $A$. El adjunto de un operador verifica
+\begin{enumerate}
+	\item $(\lambda A)^{\dagger}=\lambda^{\ast}A^{\dagger}$
+	\item $(A+B)^{\dagger}=A^{\dagger}+B^{\dagger}$
+	\item $(AB)^{\dagger}=B^{\dagger}A^{\dagger}$
+\end{enumerate}
+Esta última se obtiene de considerar $\bra{\phi '}=\bra{\phi }A$, $\ket{\psi '}=B\ket{\psi }$ y
+\[ \Braket{\phi '|\psi '}^{\ast}=\bra{\phi }AB\ket{\psi }^{\ast }=\bra{\psi }(AB)^{\dagger}\ket{\phi }=\Braket{\psi '|\phi '}=\bra{\psi }B^{\dagger}A^{\dagger}\ket{\phi} \]
+Vamos a llamar \textbf{conjugación hermítica} a la operación que hace corresponder elementos del espacio $\mathcal{H}^{\ast}$ a los elementos de $\mathcal{H}$. Para obtener el hermítico conjugado de una expresión se conjugan los escalares, se cambian los bras por kets y viceversa, se cambian los operadores por sus adjuntos y se invierte el orden de la expresión.
+
+\section{Cambio de base}
+Supongamos que tenemos las coordenadas de un \textbf{ket} en la base $\left\{ \ket{u_{1}},\ket{u_{2}},...\right\}$ y queremos las coordenadas en la base  $\left\{ \ket{v_{1}},\ket{v_{2}},...\right\}$. Lo único que tenemos que hacer es introducir la relación de cierre de la primera base de la siguiente forma:
+\begin{equation}
+ \Braket{v_{i}|\psi}=\sum_{j}\Braket{v_{i}|u_{j}}\Braket{u_{j}|\psi}
+\end{equation}
+Es decir, $C_{ij}=\Braket{v_{i}|u_{j}}$ son los elementos de la matriz de cambio de base. Para \textbf{cambiar de base un bra}, hacemos lo mismo
+ \begin{equation}
+	\Braket{\psi |v_{i}}=\sum_{j}\Braket{\psi |u_{j}}\Braket{u_{j}|v_{i}}
+\end{equation}
+Y la matriz de cambio de base en el espacio dual es $C_{ij}^{\ast}=C_{ji}^{\dagger}=\Braket{u_{j}|v_{i}}$.
+
+Para \textbf{cambiar de base un operador} vamos a repetir lo anterior
+\begin{equation}
+	\bra{v_{i}}A\ket{v_{j}}=\sum_{kl}\Braket{v_{i}|u_{k}}\bra{u_{k}}A\ket{u_{l}}\Braket{u_{l}|v_{j}}=\sum_{k,l}C_{ik}A_{kl}C_{lj}^{\dagger}
+\end{equation}
+
+\section{Operadores hermíticos y observables}
+Dado un operador lineal $A$, si se cumple que
+\begin{equation}
+	A\ket{\psi }=\lambda\ket{\psi }
+\end{equation}
+para algún $\ket{\psi }$, se dice que $\ket{\psi }$ es un \textbf{autovector} de $A$, y que $\lambda $ es su \textbf{autovalor}. El número de kets linealmente independientes que corresponden a un autovalor se denomina \textbf{grado de degeneración} del autovalor.
+
+Si $\ket{\psi }$ es un autovector de $A$, entonces $\bra{\psi }$ es un autovector del operador $A^{\dagger}$:
+\begin{equation}
+	A\ket{\psi }=\lambda\ket{\psi }\Longrightarrow \bra{\psi }A^{\dagger}=\lambda^{\ast}\bra{\psi}
+\end{equation}
+
+Si $\ket{\phi_a}$ es un autovector de $A$ con autovalor $a$, también lo es de $f(A)$ con autovalor $f(a)$
+\begin{equation}
+    f(A)\ket{\phi_a}=\sum f_n A^n \ket{\phi_a}=\sum f_n a^n\ket{\phi_a}=f(a)\ket{\phi_a}
+\end{equation}
+
+Un operador se dice \textbf{hermítico o autoadjunto} cuando coincide con su adjunto $A=A^{\dagger}$. Estos cumplen las siguientes propiedades:
+\begin{enumerate}
+	\item Los autovalores de un operador hermítico son reales.
+	\item Si $\ket{\psi }$ es un autovector de $A$ hermítico, $\bra{\psi }$ también lo es y con el mismo autovalor.
+	\item Dos autovectores de $A$ hermítico con autovalores diferentes son ortogonales.
+\end{enumerate}
+La primera se demuestra viendo que 
+\[ \bra{\psi }A\ket{\psi }=\bra{\psi }A^{\dagger}\ket{\psi }=\bra{\psi }A\ket{\psi }^{\ast}=\lambda\Braket{\psi |\psi}\in\mathbb{R} \]
+La segunda viendo que
+\[ A\ket{\psi }=\lambda\ket{\psi }\Longrightarrow \bra{\psi }A^{\dagger}=\bra{\psi }A=\lambda\bra{\psi } \]
+Y la tercera viendo que
+\[ \bra{\phi }A\ket{\psi }=\lambda_{\phi }\Braket{\phi |\psi}=\lambda_{\psi }\Braket{\phi |\psi} \]
+\[ (\lambda_{\phi }-\lambda_{\psi })\Braket{\phi |\psi }=0 \]
+Para comprobar si un operador $A$ es hermítico, podemos comprobar que se cumple lo siguiente
+\begin{equation}
+\bra{\phi }A\ket{\psi }^{\ast }=\bra{\psi }A^{\dagger}\ket{\phi }=\bra{\psi }A\ket{\phi }
+\end{equation}
+Tanto el operador posición como el momento son hermíticos.
+
+Cuando un espacio es de dimensión finita, siempre se puede encontrar una base de autovectores de un operador hermítico, cosa que no ocurre cuando la dimensión no es finita. Se dice que un operador hermítico es un \textbf{observable} si puede encontrarse una base de autovectores del operador.
+
+Si tenemos dos observables que conmutan, $A$ y $B$, se verifican:
+\begin{enumerate}
+	\item  Si $A\ket{\psi }=\lambda\ket{\psi }$, entonces $B\ket{\psi }$ también es autovector de $A$ con el mismo autovalor
+\[ AB\ket{\psi }=\lambda B\ket{\psi} \]
+Esto significa que $B\ket{\psi }$ está en el subespacio generado por los autovectores de $A$ de autovalor $\lambda$. 
+	\item Si $\ket{\psi_{1}}$ y $\ket{\psi_{2}}$ son dos autovectores de $A$ con diferente autovalor, $\bra{\psi_{1}}B\ket{\psi_{2}}=0$.
+	\[ \bra{\psi_{1}}[A,B]\ket{\psi_{2}}=(\lambda_{1}-\lambda_{2})\bra{\psi_{1}}B\ket{\psi_{2}}=0 \]
+	\item Podemos construir una base ortonormal de autovectores comunes a $A$ y $B$.
+\end{enumerate}
+Vamos a ver esto último. Si denotamos por $\ket{\psi_{n}^{i}}$ a los autovectores correspondientes al autovalor $\lambda_{n}$ de $A$ ($i=1,2,...,g_{n}$, siendo $g_{n}$ el grado de degeneración de $\lambda_{n}$), la matriz de $B$ en esta base será diagonal por bloques (siendo estos bloques de dimensión $g_{n}$). En cada subespacio $\mathcal{H}_{n}$, podemos diagonalizar $B$ (que está formado por una matriz $g_{n}\times g_{n}$), pues es hermítico. Así encontramos la base de la que hablábamos en la propiedad 3.
+
+Un conjunto de observables que conmutan se dice que es un \textbf{conjunto completo de observables que conmutan} si existe una base de autovectores comunes a todos los observables tal que a cada combinación de autovalores (1 de cada observable) le corresponde tan solo un autovector.
+
+\section{Operadores unitarios}
+Un operador $U$ se dice \textbf{unitario} si $U^{-1}=U^\dagger$, es decir, $UU^\dagger =\textbf{1}$. Los operadores unitarios \textbf{preservan el producto escalar}
+\[ \ket{\psi '}=U\ket{\psi}\ \ \ \ \ \ \ \ket{\phi '}=U\ket{\phi}\]
+\begin{equation}
+    \Braket{\phi '|\psi '}=\bra{\phi}U^\dagger U\ket{\psi}=\Braket{\phi |\psi}
+\end{equation}
+El \textbf{producto de dos operadores unitarios} es unitario
+\begin{equation}
+    (UV)^\dagger (UV)=V^\dagger U^\dagger UV=1
+\end{equation}
+Dada una base, tendremos que $\bra{u_i}U^\dagger U\ket{u_j}=\delta_{ij}$. Si introducimos la relación de cierre de dicha base
+\begin{equation}
+    \sum_k U_{ki}^{\ast}U_{kj}=\delta_{ij}
+\end{equation}
+
+Los operadores unitarios presentan algunas propiedades interesantes en sus autovectores y autovalores:
+\begin{enumerate}
+    \item Los autovalores de un operador unitario tienen módulo 1 ($u=e^{i\varphi}$).
+    \[ \bra{\psi}U^\dagger U\ket{\psi}=u^{\ast}u\Braket{\psi |\psi}\]
+    \item Dos autovectores de autovalores distintos son ortogonales.
+    \[ \bra{\phi}U^\dagger U\ket{\psi}=e^{i(\varphi -\varphi ')}\Braket{\phi |\psi} \]
+\end{enumerate}
+Dadas las bases $\ket{u_i}$ y $\ket{v_i}=U\ket{u_i}$, y $A$ un operador, llamamos \textbf{operador transformado} $\bar{A}$ a aquel que tiene los mismos elementos de matriz que $A$ pero en la nueva base
+\begin{equation}
+    \bra{v_i}\bar{A}\ket{v_j}=\bra{u_i}A\ket{u_j}
+\end{equation}
+Es inmediato comprobar que $\bar{A}=UAU^\dagger$. También es fácil ver que si $\ket{\psi}$ es un autovector de $A$, entonces $U\ket{\psi}$ lo es de $\bar{A}$
+\begin{equation}
+    A\ket{\psi}=a\ket{\psi}\Longrightarrow A(U\ket{\psi})=a(U\ket{\psi}) 
+\end{equation}
+Si un operador es hermítico, su operador transformado también lo será
+\begin{equation}
+    \bar{A}^\dagger =(UAU^\dagger )^\dagger =UAU^\dagger
+\end{equation}
+Una función de un operador se transforma como $Uf(A)U^\dagger$
+\begin{equation}
+    \bar{A}^2=UAU^\dagger UAU^\dagger =UA^2U^\dagger =\overline{A^2}
+\end{equation}
+
+Se puede construir un operador unitario a partir de uno hermítico $A$ como $U=e^{iA}$.
+
+
+\textit{Lo del operador unitario infinitesimal me da pereza y ya no tiene mucho sentido meterlo aquí. Míratelo en el último pdf del tema 4 si te interesa.}
+
+
+
+\chapter{Enriquecimiento matemático}
+\section{Motivación para el enriquecimiento matemático (esquema)}
+
+Partamos de la relación de conmutación entre posición y momento
+\begin{equation}
+\label{comm}
+    [\hat{x},\hat{p}] = i\hbar
+\end{equation}
+Tomando la traza en ambos miembros, se tiene que, como $\mathrm{Tr}(AB)=\mathrm{Tr}(BA)$, $\mathrm{Tr}([\hat{x},\hat{p}])=0$. Sin embargo, $\mathrm{Tr}(i\hbar)=i\hbar n$, donde $n$ es el número de dimensiones del espacio de estados. Claramente, el absurdo se da porque estamos asumiendo que dicho espacio tiene dimensión finita. Por tanto, en cualquier sistema donde existan dos operadores $\hat{x}$ y $\hat{p}$, u otro par cualquiera que satisfaga (\ref{comm}), el espacio de estados será infinito-dimensional. He aquí la raíz del problema: los métodos matemáticos desarrollados anteriormente solo son plenamente funcionales en dimensión finita. Cuando saltamos a dimensión infinita, surgen interrogantes sutiles pero espinosos relacionados con asuntos de convergencia, dominios de definición de operadores, etc. que requieren invocar técnicas del análisis funcional. \newline
+
+Pues bien, tal vez el lector vea esto como una mera exquisitez matemática que no afecta en nada a la validez práctica de (\ref{comm}), pero, lamentablemente, la situación es mucho más crítica de lo que parece. En efecto, \textit{esta igualdad, en general, ni siquiera está bien definida}. En resumen, el motivo es el siguiente. Los operadores $\hat{x}$ y $\hat{p}$ no están acotados. Puede verse que, junto con la condición de simetría $\langle \psi, \hat{x} \phi \rangle = \langle \hat{x} \psi, \phi \rangle$ (que es a lo que nos hemos venido refiriendo con eso de que $\hat{x}$ es un operador hermítico), y análogamente para $\hat{p}$, esto imposibilita que $\hat{x}$ y $\hat{p}$ estén definidos sobre la totalidad del espacio de estados $\mathcal{H}$. A lo más, uno puede evaluar estos operadores en sendos subconjuntos densos $\mathcal{D}_{\hat{x}}, \mathcal{D}_{\hat{p}} \subset \mathcal{H}$, que no tienen por qué coincidir. Así, si uno toma un elemento que esté en solo uno de estos dos subconjuntos, o en ninguno, sería imposible evaluar el conmutador de (\ref{comm}). ¡Pero estos estados son, en principio, estados físicos perfectamente legítimos! Es claro que esta manera de enunciar el principio de incertidumbre resulta insuficiente, y no es solo una cuestión de corrección formal. \newline
+
+Lo expuesto en el párrafo anterior deja entrever que la maquinaria presentada en las secciones anteriores ha de generalizarse profundamente para dar cuenta de espacios infinito-dimensionales y operadores no acotados, lo cual, de hecho, es lo que suele encontrarse uno en cuántica (el átomo de hidrógeno, el oscilador armónico, etc.). Entre otras penurias, necesitaremos establecer una diferencia fundamental entre operadores hermíticos y autoadjuntos, que hasta ahora se habían tratado como una y la misma sustancia. Como se desprende del nombre, una aplicación lineal es autoadjunta si coincide con su adjunto, esto es, $A = A^*$. Para que dos aplicaciones puedan decirse iguales, no solo han de coincidir sus imágenes, \textit{sino también sus dominios}. Cuando $A$ está definido sobre un suconjunto denso $\mathcal{D}_A \subset \mathcal{H}$, ocurre que, por norma general, $\mathcal{D}_A \neq \mathcal{D}_{A^*}$. Por tanto, demostrar que $A = A^*$ para un operador $A$ simétrico y no acotado se vuelve una tarea nada trivial. Sin embargo, los postulados de la mecánica cuántica establecen que \textit{los observables son operadores autoadjuntos} (¡que no solo hermíticos!), y por ello nos vemos obligados a mancharnos las manos con esta mugre técnica y potencialmente indeseada si queremos hacer las cosas con la pulcritud requerida. \newline
+
+Lo cierto es que cuando le endiñan a un estudiante de física con poca apreciación por el rigor matemático (o quizá sean sus profesores a quienes se la trae al pairo) un problema que involucra un espacio de estados infinito-dimensional, nuestro desdichado amigo hace diabluras de lo más indecorosas. Por ejemplo, el operador posición $\hat{x}$ en el espacio de Hilbert $L^2(\mathbb{R})$ \textit{no posee autovalores}, y aún así se empecina en afirmar que todo número real es autovalor de $\hat{x}$. Cuando le pides una justificación, te larga que (le han enseñado que) existen autoestados del operador posición que se notan $|x\rangle$. ¿Y cuáles son dichos estados, hablando en argenta? Pues las 'funciones' $\delta(x-\lambda)$. Y tira para delante con todo el procedimiento a pesar de que estos presuntos $|x\rangle$ \textit{ni siquiera son elementos del espacio de estados}. Emplea relaciones de ortogonalidad y escribe resoluciones espectrales de operadores en clave de unos objetos que carecen de norma bien definida. Una verdadera herejía matemática.
+
+
+
+
+
+\section{Espacios de Bannach}
+Vamos a ver en primer lugar qué son los espacios de Bannach y a demostrar algunos teoremas importantes que nos serán de gran utilidad. Esto no debería resultar extraño, considerando que los espacios de Bannach son, en esencia, una generalización de los espacios de Hilbert (en particular todo espacio de Hilbert es un espacio de Bannach), y estos últimos son ampliamiente utilizados en la física cuántica. De hecho a todo sistema cuántico se le asocia un espacio de Hilbert. Sin embargo, para comenzar a hablar de espacios de Hilbert o de Bannach, tenemos que irnos aún más atrás, hasta los espacios vectoriales normados.
+
+\subsection{Espacios vectoriales normados}
+La principal motivación para introducir este tipo de espacios es que introducir una norma en un espacio vectorial añade mucha riqueza, pues con ella podemos definir una distancia, dando lugar a una topología, una noción de convergencia, etc. Nos permite utilizar el análisis matemático en dicho espacio para sacarle todo el partido posible.
+\begin{dft}
+Sea $(V,\mathbb{K},+,\cdot )$ un espacio vectorial real o complejo, se dice que una aplicación $||\cdot ||:V\to\mathbb{R}$ es una \textbf{norma} sii\footnote{Todas las definiciones son un si y solo si. Escribir sii es una forma abreviada de escribir si y solo si.} verifica las siguientes propiedades:
+\begin{enumerate}
+    \item $\forall x\in V\ \ \ ||x||\geq 0$, siendo $||x||=0\iff x=0$
+    \item $\forall x\in V, \lambda\in\mathbb{K}\ \ \ ||\lambda x||=|\lambda |\cdot ||x||$, donde $|\lambda |$ es el módulo de $\lambda$
+    \item $\forall x,y\in V\ \ \ ||x+y||\leq ||x||+||y||$ (desigualdad triangular)
+\end{enumerate}
+Así mismo, un espacio vectorial equipado con una norma se dice que es un \textbf{espacio vectorial normado}.
+\end{dft}
+
+\textbf{Nota:} Para introducir una norma en un espacio vectorial, debemos tener alguna noción de módulo o valor absoluto, ya que aparece en el segundo axioma. Es por eso que nos hemos quedado en los casos real y complejo, este último de mayor interés para nuestros propósitos.
+
+Un espacio normado no deja de ser una abstracción de los espacios reales euclídeos, en los que trabajamos utilizando la norma euclídea, que como es bien sabido, son el terreno de juego del análisis matemático que se estudia en los primeros cursos de la universidad.
+
+\textbf{Ejemplo.} Consideramos en $\mathbb{R}^3$ la norma euclídea $||\cdot ||$ que asocia a cada vector $x=(x^1,x^2,x^3)\in\mathbb{R}^3$ el número $||x||=\sqrt{(x^1)^2+(x^2)^2+(x^3)^2}$. Veamos que de hecho, esta aplicación es una norma:
+\begin{enumerate}
+    \item Por supuesto, una suma de cuadrados es positiva, y la raíz de un número positivo es otro número positivo. Además, si $||x||=0$, significa que el argumento de la raíz debe ser nulo (de lo contrario su raíz no sería nula), pero como $(x^i)^2\geq 0$, para que se anule deben ser $x^i=0$ para todo $i=1,2,3$.
+    \item De las propiedades de los exponentes y teniendo en cuenta que $\sqrt{a^2}=|a|\ \forall a\in\mathbb{R}$, el segundo postulado es sencillo de demostrar.
+    \item Partimos de que $$||x+y||^2=\sum_{i=1}^3 (x^i+y^i)^2=\sum_{i=1}^3\left[ (x^i)^2+(y^i)^2+2x^iy^i\right]$$
+    Ahora bien, la desigualdad de Cauchy-Schwarz nos dice que $\sum_i(x^iy^i)\leq\sqrt{\sum_i (x^i)^2}\sqrt{\sum_i (y^i)^2}$ y por lo tanto 
+    $$||x+y||^2\leq\sum_{i=1}^3\left[ (x^i)^2+(y^i)^2\right] +2\sqrt{\sum_{i=1}^3 (x^i)^2}\sqrt{\sum_{i=1}^3(y^i)^2}=\left( ||x||+||y||\right)^2
+    $$
+\end{enumerate}
+
+Ahora que tenemos a nuestra disposición todo el poder de los espacios normados, podemos tomar en cuenta sucesiones y límites, al igual que hacíamos en $\mathbb{R}$. Una \textbf{sucesión} $\{ a_n\}_n\in\mathbb{N}$ en un espacio normado $V$, no es sino una función $A:\mathbb{N}\to V$ que manda $n\mapsto a_n\in V$. Para definir una noción de convergencia, vamos a utilizar la norma con la que hemos equipado al espacio, de manera que:
+\begin{dft}
+Sea $\{ a_n\}_n\in\mathbb{N}$ una sucesión en $V$. Decimos que la sucesión \textbf{converge} a $a\in V$ sii $$\forall \epsilon >0\ \exists N\in\mathbb{N}/n\geq N\implies ||a_n-a||<\epsilon$$
+en cuyo caso decimos que $a$ es el \textbf{límite de la sucesión} y escribimos
+$$a=\lim_{n\to \infty}a_n$$
+En caso contrario se dice que la sucesión \textbf{diverge}.
+\end{dft}
+
+En principio, de acuerdo con la definición anterior una sucesión podría admitir varios límites diferentes, siempre que todos ellos satisfagan la definición. Esto puede ocurrir en los espacios topológicos (aún más generales y abstractos que los normados); sin embargo, en el caso de los espacios normados puede demostrarse que, si una sucesión converge, su límite es único.
+\begin{thm}
+Sea $\{ a_n\}_n\in\mathbb{N}$ una sucesión en un espacio normado $(V,||\cdot ||)$. Si la sucesión converge a $a,b\in V$, entonces necesariamente $a=b$.
+\end{thm}
+\begin{proof}
+Si $\{ a_n\}_{n\in\mathbb{N}}$ converge a $a$ y a $b$, debe cumplirse que
+$$\forall \epsilon >0\ \exists N\in\mathbb{N}/n\geq N\implies ||a_n-a||<\epsilon$$
+$$\forall \epsilon >0\ \exists M\in\mathbb{N}/m\geq M\implies ||a_m-b||<\epsilon$$
+Si conseguimos demostrar a partir de esto lo siguiente
+$$\forall \epsilon >0\ \ \ \ ||b-a||<\epsilon$$
+podremos concluir que $a=b$, ya que de lo contrario $||b-a||\neq 0$, por el primer axioma de la norma, y tomando $\epsilon =||b-a||/2$ no se cumpliría lo anterior. Tomemos un $\epsilon >0$ cualquiera y quedémonos con $K=\max (N,M)$. Ahora si $k\geq K$ se cumplirá que
+$$||a_k-a||<\epsilon\ \ \ \ \ \ \ \ ||a_k-b||<\epsilon$$
+Llamemos $p_k=a_k-a$ y $q_k=b-a_k$, de manera que, aplicando la desigualdad triangular
+$$||p_k+q_k||\leq ||p_k||+||q_k||$$
+$$||b-a||\leq ||a_k-a||+||b-a_k||<2\epsilon$$
+Donde hemos hecho uso de que $||-x||=|-1|\cdot ||x||=||x||$. Esto demuestra que $||b-a||$ es tan pequeño como queramos.
+\end{proof}
+
+
+
+\subsection{Preliminares topológicos}
+Antes de continuar, y ya introducidos los espacios normados, conviene estudiar algunos aspectos básicos sobre los espacios topológicos, pues usaremos algunos resultados más adelante. Para introducir los espacios topológicos, vamos a motivarnos en los espacios métricos. Recordemos qué es un espacio métrico:
+
+\begin{dft}
+Un \textbf{espacio métrico} es una dupla $(X,d)$ formada por un conjunto $X$ y una métrica $d:X\times X\to\mathbb{R}$ que satisface\footnote{En realidad a partir de $d(x,y)= 0\iff x=y$ y de $d(x,y)+d(y,z)\geq d(x,z)$ podemos deducir el resto de propiedades, aunque tampoco merece la pena pararnos a ello.}:
+\begin{itemize}
+    \item $d(x,y)=d(y,x)$\hspace{6.75cm} $\forall x,y\in X$
+    \item $d(x,y)\geq 0$, siendo $d(x,y)=0\iff x=y$\hspace{2cm} $\forall x,y\in X$
+    \item $d(x,y)+d(y,z)\geq d(x,z)$ \hspace{5cm} $\forall x,y,z\in X$
+\end{itemize}
+\end{dft}
+
+
+\subsection{Sucesiones de Cauchy}
+Ya tenemos los espacios de Bannach a punto de caramelo, lo único que nos queda es comprender qué significa que un espacio sea completo. Esto está relacionado con la propiedad de Cauchy, que es una propiedad que verifican algunas sucesiones.
+
+\begin{dft}
+Una sucesión $\{ a_n\}_{n\in\mathbb{N}}$ se dice que verifica la \textbf{propiedad de Cauchy}, o que es una \textbf{sucesión de Cauchy} sii 
+$$\forall\epsilon >0\ \exists N\in\mathbb{N}/n,m\geq N\implies ||a_n-a_m||<\epsilon$$
+\end{dft}
+Podemos pensar en las sucesiones de Cauchy como aquellas en los que sus elementos se acercan más y más a medida que aumentamos el valor de $n$. En los ojos de un aprendiz de matemáticas podría parecer, a primera vista, que las sucesiones de Cauchy y las convergentes son las mismas. Por lo general esto no es cierto, el problema está en que solemos imaginarnos todos estos conceptos en $\mathbb{R}^n$. La forma más sencilla de encontrar un contraejemplo es pennsar en una sucesión cualquiera, por ejemplo la sucesión $a_n=\frac{1}{n}$ en $\mathbb{R}$ y a continuación quitar el límite de nuestro espacio, quedándonos con $\mathbb{R}^\ast$. Ahora la sucesión es de Cauchy, pero no converge porque el $0$ no está en este espacio. Lo que sí es cierto es lo siguiente:
+
+\begin{thm}
+Toda sucesión convergente en un espacio normado es de Cauchy.
+\end{thm}
+\begin{proof}
+Consideramos una sucesión $\{ a_n\}_{n\in\mathbb{N}}$ que converge a $a\in V$. Tomemos entonces un $\epsilon >0$ concreto. Como la sucesión es convergente, existe un $N\in\mathbb{N}$ tal que si $n,m\geq N$ podemos afirmar que
+$$||a_n-a||<\epsilon\ \ \ \ \ ||a_m-a||<\epsilon$$
+Ahora bien, porque se cumple la desigualdad triangular (y como $||-x||=||x||$)
+$$||a_n-a_m||=||(a_n-a)+(a-a_m)||\leq ||a_n-a|| +||a-a_m||<2\epsilon$$
+\end{proof}
+
+\begin{dft}
+Decimos que un espacio normado $V$ es \textbf{completo} sii toda sucesión de Cauchy es convergente.
+\end{dft}
+Una ventaja que tienen los espacios completos, es que para estudiar la convergencia de una sucesión tan solo debemos conocer la sucesión, mientras que si no se trata de un espacio completo, la condición de convergencia depende explícitamente del límite de dicha sucesión. Es precisamente esta condición, la de completitud, la que le vamos a pedir a un espacio para ser un espacio de Bannach.
+
+\begin{dft}
+Un espacio normado $V$ se dice que es un \textbf{espacio de Bannach} sii es completo respecto a su norma.
+\end{dft}
+
+\subsection{Aplicaciones lineales en espacios de Bannach}
+Vamos a considerar aplicaciones lineales $A:V\to W$ entre un espacio normado $V$ y uno de Bannach $W$.  Esto son, aplicaciones que verifican la condición de linealidad
+$$\forall x,y\in V\ \ \forall\lambda\in\mathbb{C}\ \ \ \ \ \ \ A(x+\lambda y)=Ax+\lambda Ay\footnote{A menudo emplearemos la notación $Ax$ en lugar de $A(x)$.}$$
+Además, a no ser que se especifique lo contrario debe entenderse que estos espacios vectoriales son complejos, pues estos son los que nos aparecen en cuántica.
+
+%¿Algo de motivación para los operadores acotados?
+Un tipo de aplicaciones lineales de particular interés son las acotadas:
+\begin{dft}
+Una aplicación lineal $A:V\to W$ se dice que es \textbf{acotada}, o un \textbf{operador acotado} sii
+$$\sup_{x\in V}\frac{||Ax||_W}{||x||_V}<\infty$$
+\end{dft}
+Quizá es conveniente recordar qué se entiende por supremo de un conjunto de números. Si tenemos un conjunto de números reales $S$, una cota superior es cualquier número $a\in\mathbb{R}$ tal que $s\in S\implies s<x$. Definimos el supremo $\sup S$ como la menor cota superior de $S$. Esto significa que si $a$ es una cota superior, entonces necesariamente $a\geq\sup S$.\footnote{Precisamente, el axioma del supremo nos dice que todo subconjunto de $\mathbb{R}$ acotado superiormente posee un supremo.}
+\begin{dft}
+Llamamos $\mathcal{L}(V,W)$ al conjunto de aplicaciones lineales acotadas entre un espacio normado $V$ y uno de Bannach $W$.
+\end{dft}
+Es sencillo comprobar que $\mathcal{L}(V,W)$ forma un espacio vectorial complejo junto con las operaciones \begin{align*}
+    +_\mathcal{L}:\mathcal{L}(V,W)\times \mathcal{L}(V,W)\to\mathcal{L}(V,W) & \cdot_\mathcal{L}:\mathbb{C}\times \mathcal{L}(V,W)\to\mathcal{L}(V,W)
+\end{align*}
+que quedan determinadas por $(A+_\mathcal{L}B)(x)=Ax+_WBx$ y $(\lambda\cdot_\mathcal{L}A)(x)=\lambda\cdot_WAx$. La mayoría de las propiedades las hereda de $W$, y es sencillo ver que la suma y el producto son cerrados en $\mathcal{L}(V,W)$. De hecho, este espacio es incluso un espacio de Bannach, ¿pero con respecto a qué norma?
+
+\begin{dft}
+Sea $A\in\mathcal{L}(V,W)$ un operador lineal acotado entre un espacio normado $V$ y otro de Bananch $W$. Se define la norma de este operador como
+$$||A||_\mathcal{L}=\sup_{x\in V}\frac{||Ax||_W}{||x||_V}$$
+\end{dft}
+
+\textbf{Nota:} En lugar de tomar el supremo sobre todo el espacio, al tratarse de aplicaciones lineales podemos establecer la siguiente igualdad:
+$$||A||_\mathcal{L}=\sup_{x\in V}\frac{||Ax||_W}{||x||_V}=\sup_{||x||_V=1}||Ax||_W$$
+y considerar solo los $x\in V$ tales que $||x||=1$.
+
+Puede comprobarse sin mucha dificultad que en efecto, se trata de una norma sobre $\mathcal{L}(V,W)$ según nuestra definición anterior. Lo interesante ahora es que por considerar aplicaciones entre un espacio normado y uno de Bannach, podemos demostrar que este nuevo espacio es también un espacio de Bannach.
+
+\begin{thm}
+El espacio vectorial normado $(\mathcal{L}(V,W),||\cdot ||_\mathcal{L})$ de aplicaciones lineales acotadas entre el espacio normado $V$ y el espacio de Bannach $W$, es un espacio de Bannach.
+\end{thm}
+
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\section{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+\subsection{A ver si al dividirse en dos líneas por ser muy largo esto sigue funcionando o se rompe}
+
+\end{document}
+
