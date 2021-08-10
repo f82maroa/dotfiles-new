@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-r=$(echo -e "zsh\nvim\nalacritty\npolybar\nneofetch\nbspwm\nsxhkd" | dmenu -i -p "Configuración" -nb black -fn "Iosevka Nerd Font-10")
+r=$(echo -e "zsh\nvim\nalacritty\npolybar\nneofetch\nbspwm\nsxhkd\nbookmarks" | dmenu -i -p "Configuración" -nb black -fn "Iosevka Nerd Font-10")
 
 case "$r" in
 	"zsh") alacritty --command vim ~/.zshrc;;
@@ -9,6 +9,7 @@ case "$r" in
 	"neofetch") alacritty --command vim ~/.config/neofetch/config.conf ;;
 	"bspwm") alacritty --command vim ~/.config/bspwm/bspwmrc ;;
 	"sxhkd") alacritty --command vim ~/.config/sxhkd/sxhkdrc ;;
+	"bookmarks") alacritty --command vim ~/.config/bookmarks ;;
 	*) echo "Nada";;
 esac
 

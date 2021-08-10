@@ -1,9 +1,7 @@
 #/bin/bash
-font="Meslo LG L Nerd Font:size=10"
-sb=#00b859
-Tipo=$(echo -e "#---------------------  LIBROS  ---------------------\nCuantica\nOtro\nEntrenamiento\n " |dmenu -i -l 20 -p LIBRERÍA -sb "$sb" -fn "$font")
-echo "$Tipo"
-file=`find ~/Documentos/Libreria/$Tipo -iname "*.pdf" |dmenu -l 20 -p "LIBRERIA/$Tipo" -fn "$font" -sb "$sb" `
-reader=$(echo -e "evince\nzathura\natril" | dmenu -p "¿Qué visor de PDF?" -sb "#aa00ff" -fn "$font")
-$reader "$file"
+font="Meslo LG L Nerd Font:size=9"
+sb=#8ec07c
+file=`find ~/Documentos/Libreria/ -iname "*.pdf"  | cut -d '/' -f 6,7 |dmenu -i -l 20 -p "LIBRERIA" -nb "#1d2021" -fn  "$font" -sb "$sb" `
+reader=$(echo "evince\nzathura\natril" | dmenu -p "¿Qué visor de PDF?" -sb "#d3869b" -nb "#1d2021" -fn "$font")
+$reader /home/alvaromr/Documentos/Libreria/"$file"
 

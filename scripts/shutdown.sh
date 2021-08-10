@@ -11,7 +11,7 @@
 # - Give it exec priviledge, or chmod +x /path/to/power.sh
 # - Run it
 
-chosen=$(echo -e "Log Out\nApagar\nReboot" | dmenu -i -p "¿Qué desea realizar?" -sb red -fn "Iosevka Nerd Font-10")
+chosen=$(echo -e "Log Out\nApagar\nReboot" | dmenu -i -p "¿Qué desea realizar?" -nb "#1d2021" -sb "#cc241d" -fn "Meslo LG L Nerd Font:size=9")
 # Info about some states are available here:
 # https://www.freedeskt.org/software/systemd/man/systemd-sleep.conf.html#Description
 
