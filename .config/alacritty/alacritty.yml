@@ -99,7 +99,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: "Meslo LG M Nerd Font"
+    family: "Iosevka Nerd Font"
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -138,7 +138,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 8
+  size: 9
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -579,17 +579,17 @@ colors:
 colors:
   # Default colors
   primary:
-    background: '0x101011'
+    background: '0x1d1f21'
       #'0x0a0301'
     foreground: '0xf5efde'
 
   # Normal colors
   normal:
-    black:   '0x0a0301'
+    black:   '0x1d1f21'
     red:     '0xda7047'
-    green:   '0xec9b5d'
+    green:   '0x00aaff'
     yellow:  '0xe6b24c'
-    blue:    '0xf3b78b'
+    blue:    '0xfea600'
     magenta: '0xfadca4'
     cyan:    '0xf3dbc8'
     white:   '0xf5efde'
@@ -604,4 +604,4 @@ colors:
     magenta: '0xffd700'
     cyan:    '0xff5500'
     white:   '0xffffff'
-background_opacity : 0.7
+background_opacity : 0.95
