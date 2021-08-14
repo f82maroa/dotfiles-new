@@ -3,7 +3,6 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 #compton --config /home/alvaromr/.config/compton/compton.conf &
 feh --bg-fill /home/alvaromr/Escritorio/wallpaper/lake.jpg &
-#feh --bg-fill --conversion-timeout 1 /usr/share/desktop-base/homeworld-theme/wallpaper/contents/images/1920x1080.svg &
 $HOME/.config/polybar/launch.sh &
 WNAME L3GD &
 killall mate-notification-daemon; dunst &
@@ -16,6 +15,8 @@ bspc monitor HDMI-1 -d VII VIII
 #bspc monitor -d I II III IV V
 # VIII IX X
 bspc rule -a Xfce4-terminal state=floating
+bspc rule -a mpv state=floating rectangle=600x350+250+100
+bspc rule -a kitty state=floating rectangle=400x200+20+20
 
 bspc config border_width         3
 bspc config window_gap         6
