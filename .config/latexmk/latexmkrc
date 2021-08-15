@@ -1,3 +1,5 @@
 $pdf_update_method = 2;
-$pdf_previewer='mupdf -I'
+#pdf_previewer = 'zathura'
+$pdf_previewer='mupdf -I -C ffffff'
+
 
