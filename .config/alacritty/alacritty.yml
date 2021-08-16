@@ -292,14 +292,14 @@ colors:
 # Allow terminal applications to change Alacritty's window title.
 #dynamic_title: true
 
-#cursor:
+cursor:
   # Cursor style
   #
   # Values for `style`:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  #style: Block
+  style: Beam
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -590,7 +590,7 @@ colors:
     red:     '0xda7047'
     green:   '0xFFEF1D'
     yellow:  '0xe6b24c'
-    blue:    '0xfea600'
+    blue:    '0xff4400'
     magenta: '0xfadca4'
     cyan:    '0xf3dbc8'
     white:   '0xf5efde'
@@ -602,7 +602,7 @@ colors:
     green:   '0xec9b5d'
     yellow:  '0xe6b24c'
     blue:    '0xf3b78b'
-    magenta: '0xffd700'
+    magenta: '0xff6600'
     cyan:    '0xff5500'
     white:   '0xffffff'
-background_opacity : 0.8
+background_opacity : 0.7
